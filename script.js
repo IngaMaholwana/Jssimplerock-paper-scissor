@@ -23,10 +23,21 @@ function playGame(playerChoice) {
 
     document.getElementById('result').innerText = result;
     updateScore();
+
+    // Check if any player has reached 5 points
+    if (playerScore === 5 || computerScore === 5) {
+        announceWinner();
+    }
 }
 
 function updateScore() {
     document.getElementById('score').innerText = `Player: ${playerScore} | Computer: ${computerScore}`;
+}
+
+function announceWinner() {
+    const winner = playerScore === 5 ? 'Player' : 'Computer';
+    alert(`${winner} wins the game! Final Score:\nPlayer: ${playerScore} | Computer: ${computerScore}`);
+    resetGame();
 }
 
 function checkQuit() {
